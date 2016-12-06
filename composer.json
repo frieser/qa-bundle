@@ -1,0 +1,32 @@
+{
+    "name": "frieserlabs/qa-bundle",
+    "description": "Quality bundle",
+    "minimun-stability": "stable",
+    "type": "bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Héctor Molano Macias",
+            "email": "fiti.pol@gmail.com"
+        }
+    ],
+    "autoload":{
+        "psr-0": {
+            "Frieserlabs\\Bundle\\QABundle": "src/"
+        }
+    },
+    "require": {
+        "phpunit/phpunit": ">=4.1 <6.0",
+        "phpmd/phpmd": "~2.4",
+        "squizlabs/php_codesniffer": "~2.6",
+        "friendsofphp/php-cs-fixer": ">=1.11 <3.0",
+        "symfony/http-kernel": ">2.6 <4.0",
+        "composer/composer": "~1.2"
+    },
+    "config": {
+        "hook-dir": "hooks"
+    },
+    "suggests":{
+        "figlet": "*"
+    }
+}

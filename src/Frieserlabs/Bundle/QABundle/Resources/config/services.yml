@@ -1,0 +1,10 @@
+services:
+  frieserlabs.qa_tool.command:
+    class: Frieserlabs\Bundle\QABundle\Command\QualityCommand
+    arguments:
+      - "@frieserlabs.qa_tool.quality_tester"
+    tags:
+      - { name: console.command }
+
+  frieserlabs.qa_tool.quality_tester:
+    class: Frieserlabs\Bundle\QABundle\QualityTester\QualityTester

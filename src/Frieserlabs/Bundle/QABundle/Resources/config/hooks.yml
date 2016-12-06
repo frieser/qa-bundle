@@ -1,0 +1,22 @@
+services:
+  frieserlabs.qa_tool.hook.base:
+    class: Frieserlabs\Bundle\QABundle\Hook\Hook
+    abstract: true
+
+  frieserlabs.qa_tool.hook.pre_commit:
+    class: Frieserlabs\Bundle\QABundle\Hook\Git\PreCommit
+    parent: frieserlabs.qa_tool.hook.base
+    tags:
+      - { name: frieserlabs.qa_tool.hook }
+
+  frieserlabs.qa_tool.hook.commit_msg:
+    class: Frieserlabs\Bundle\QABundle\Hook\Git\CommitMsg
+    parent: frieserlabs.qa_tool.hook.base
+    tags:
+      - { name: frieserlabs.qa_tool.hook }
+
+  frieserlabs.qa_tool.hook.pre_push:
+    class: Frieserlabs\Bundle\QABundle\Hook\Git\PrePush
+    parent: frieserlabs.qa_tool.hook.base
+    tags:
+      - { name: frieserlabs.qa_tool.hook }

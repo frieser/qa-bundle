@@ -1,0 +1,50 @@
+parameters:
+  project_root_path: "%kernel.root_dir%/../"
+  bin_root_path: "%project_root_path%/vendor/bin"
+  phpunit_dist_xml_path: "%project_root_path%"
+
+services:
+  frieserlabs.qa_tool.tool.base:
+    class: Frieserlabs\Bundle\QABundle\Tool\Tool
+    abstract: true
+    arguments:
+      - "%bin_root_path%"
+      - "%project_root_path%"
+
+  frieserlabs.qa_tool.tool.phplint:
+    class: Frieserlabs\Bundle\QABundle\Tool\PhpLint\PhpLint
+    parent: frieserlabs.qa_tool.tool.base
+    tags:
+      - { name: frieserlabs.qa_tool.tool}
+
+  frieserlabs.qa_tool.tool.phpcs:
+    class: Frieserlabs\Bundle\QABundle\Tool\PhpCs\PhpCs
+    parent: frieserlabs.qa_tool.tool.base
+    tags:
+      - { name: frieserlabs.qa_tool.tool}
+
+  frieserlabs.qa_tool.tool.phpcs_fixer:
+    class: Frieserlabs\Bundle\QABundle\Tool\PhpCsFixer\PhpCsFixer
+    parent: frieserlabs.qa_tool.tool.base
+    tags:
+      - { name: frieserlabs.qa_tool.tool}
+
+  frieserlabs.qa_tool.tool.phpmd:
+    class: Frieserlabs\Bundle\QABundle\Tool\PhpMd\PhpMd
+    parent: frieserlabs.qa_tool.tool.base
+    tags:
+      - { name: frieserlabs.qa_tool.tool}
+
+  frieserlabs.qa_tool.tool.composer_check:
+    class: Frieserlabs\Bundle\QABundle\Tool\ComposerCheck\ComposerCheck
+    parent: frieserlabs.qa_tool.tool.base
+    tags:
+      - { name: frieserlabs.qa_tool.tool}
+
+  frieserlabs.qa_tool.tool.phpunit:
+    class: Frieserlabs\Bundle\QABundle\Tool\PhpUnit\PhpUnit
+    parent: frieserlabs.qa_tool.tool.base
+    arguments:
+      - "%phpunit_dist_xml_path%"
+    tags:
+      - { name: frieserlabs.qa_tool.tool}
